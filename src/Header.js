@@ -17,11 +17,8 @@ function Header() {
 
   return (
     <div className="header">
-      <Link to="/">
-        <img
-          className="header__logo"
-          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
-        />
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <h2 className="header__logo">Aura Style</h2>
       </Link>
 
       <div className="header__search">
@@ -47,7 +44,7 @@ function Header() {
 
         <div className="header__option">
           <span className="header__optionLineOne">Your</span>
-          <span className="header__optionLineTwo">Prime</span>
+          <span className="header__optionLineTwo">Style</span>
         </div>
 
         <Link to="/checkout">
