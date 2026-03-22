@@ -1,0 +1,161 @@
+.productDetail {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  background-color: #f7f9fa;
+  min-height: calc(100vh - 70px);
+}
+
+.productDetail__container {
+  display: flex;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  max-width: 1200px;
+  width: 100%;
+  gap: 50px;
+}
+
+@media (max-width: 768px) {
+  .productDetail__container {
+    flex-direction: column;
+  }
+}
+
+.productDetail__left {
+  flex: 0.4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productDetail__imageWrapper {
+  background: #fdfdfd;
+  width: 100%;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.productDetail__imageWrapper img {
+  width: 100%;
+  max-width: 400px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.productDetail__imageWrapper img:hover {
+  transform: scale(1.1); /* Zoom effect on hover like Myntra */
+}
+
+.productDetail__tryOnBtn {
+  width: 100%;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+  transition: all 0.3s;
+}
+
+.productDetail__tryOnBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
+}
+
+.productDetail__right {
+  flex: 0.6;
+  display: flex;
+  flex-direction: column;
+}
+
+.productDetail__title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.productDetail__rating {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.productDetail__price {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 30px;
+}
+
+.productDetail__description {
+  margin-bottom: 40px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.productDetail__description h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.productDetail__description ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.productDetail__addToBasket {
+  margin-top: auto;
+  padding: 15px 25px;
+  cursor: pointer;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border: none;
+  background: #111;
+  color: white;
+  max-width: 300px;
+}
+
+.productDetail__addToBasket:hover {
+  background: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.productDetail__recommendations {
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.recommendation__section {
+  margin-bottom: 40px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.recommendation__section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.recommendation__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}

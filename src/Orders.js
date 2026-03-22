@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { db } from "./firebase";
+import axios from './axios';
 import './Orders.css'
 import { useStateValue } from "./StateProvider";
 import Order from './Order'
@@ -10,21 +10,22 @@ function Orders() {
 
   useEffect(() => {
     if(user) {
-        db
-        .collection('users')
-        .doc(user?.uid)
-        .collection('orders')
-        .orderBy('created', 'desc')
-        .onSnapshot(snapshot => (
-            setOrders(snapshot.docs.map(doc => ({
-                id: doc.id,
-                data: doc.data()
-            })))
-        ))
+        axios.get(`/api/orders/${user.email}`)
+        .then(response => {
+            setOrders(response.data.map(orderDoc => ({
+                id: orderDoc._id,
+                data: {
+                    amount: orderDoc.totalAmount * 100, // Make it compatible with original logic (cents)
+                    created: orderDoc.createdAt ? new Date(orderDoc.createdAt).getTime() / 1000 : 0,
+                    basket: orderDoc.items,
+                    status: orderDoc.status // Extra tracking status feature
+                }
+            })));
+        })
+        .catch(err => console.error("Could not fetch orders", err));
     } else {
         setOrders([])
     }
-
   }, [user])
 
     return (

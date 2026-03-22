@@ -15,7 +15,12 @@ function CheckoutProduct({ id, image, title, price, rating, hideButton }) {
 
     return (
         <div className='checkoutProduct'>
-            <img className='checkoutProduct__image' src={image} />
+            <img 
+               className='checkoutProduct__image' 
+               src={image} 
+               alt={title}
+               onError={(e) => { e.target.onerror = null; e.target.src = "https://via.placeholder.com/300x400?text=Image+Not+Found"; }}
+            />
 
             <div className='checkoutProduct__info'>
                 <p className='checkoutProduct__title'>{title}</p>

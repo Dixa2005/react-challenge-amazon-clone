@@ -12,6 +12,9 @@ function Order({ order }) {
             <p className="order__id">
                 <small>{order.id}</small>
             </p>
+            <p className="order__status" style={{ color: '#ff9900', fontWeight: 'bold', margin: '10px 0' }}>
+                Status: {order.data.status || 'Ordered'}
+            </p>
             {order.data.basket?.map(item => (
                 <CheckoutProduct
                     id={item.id}

@@ -42,10 +42,12 @@ function Header() {
         </Link>
         
 
-        <div className="header__option">
-          <span className="header__optionLineOne">Your</span>
-          <span className="header__optionLineTwo">Style</span>
-        </div>
+        <Link to='/wishlist' style={{ textDecoration: 'none' }}>
+          <div className="header__option">
+            <span className="header__optionLineOne">Your</span>
+            <span className="header__optionLineTwo">Wishlist</span>
+          </div>
+        </Link>
 
         <Link to="/checkout">
           <div className="header__optionBasket">

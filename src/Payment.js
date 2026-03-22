@@ -40,40 +40,40 @@ function Payment() {
     console.log('👱', user)
 
     const handleSubmit = async (event) => {
-        // do all the fancy stripe stuff...
         event.preventDefault();
         setProcessing(true);
 
-        const payload = await stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-                card: elements.getElement(CardElement)
+        // EXTRA FEATURES: Fake payment system (for demo)
+        // Simulate a payment processing delay
+        setTimeout(async () => {
+            const fakePaymentIntentId = "pi_fake_" + Math.random().toString(36).substr(2, 9);
+            const totalAmount = getBasketTotal(basket);
+
+            try {
+                // Save Order to MongoDB
+                await axios.post("/api/orders", {
+                    userId: user ? user.email : "guest",
+                    items: basket,
+                    totalAmount: totalAmount,
+                    paymentIntentId: fakePaymentIntentId
+                });
+
+                setSucceeded(true);
+                setError(null);
+                setProcessing(false);
+
+                dispatch({
+                    type: 'EMPTY_BASKET'
+                });
+
+                history.replace('/orders');
+            } catch (err) {
+                console.error("Error saving order: ", err);
+                setError("Payment Failed.");
+                setProcessing(false);
             }
-        }).then(({ paymentIntent }) => {
-            // paymentIntent = payment confirmation
-
-            db
-              .collection('users')
-              .doc(user?.uid)
-              .collection('orders')
-              .doc(paymentIntent.id)
-              .set({
-                  basket: basket,
-                  amount: paymentIntent.amount,
-                  created: paymentIntent.created
-              })
-
-            setSucceeded(true);
-            setError(null)
-            setProcessing(false)
-
-            dispatch({
-                type: 'EMPTY_BASKET'
-            })
-
-            history.replace('/orders')
-        })
-
-    }
+        }, 1500);
+    };
 
     const handleChange = event => {
         // Listen for changes in the CardElement
