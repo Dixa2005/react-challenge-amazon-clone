@@ -5,8 +5,8 @@ import { clothingDataset } from "./dataset";
 
 function Home() {
   // Real-feeling recommendations by mixing categories
-  const recommended = [clothingDataset[0], clothingDataset[5], clothingDataset[12], clothingDataset[21]];
-  const trending = [clothingDataset[1], clothingDataset[6], clothingDataset[18], clothingDataset[23], clothingDataset[13], clothingDataset[9]];
+  const recommended = [clothingDataset[0], clothingDataset[5], clothingDataset[12], clothingDataset[19]];
+  const trending = [clothingDataset[1], clothingDataset[6], clothingDataset[18], clothingDataset[20], clothingDataset[13], clothingDataset[9]];
   const newArrivals = clothingDataset.slice(9, 15);
 
   return (
